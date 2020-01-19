@@ -1,0 +1,17 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ErneuterVersuch
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Hauptmenü ha1 = new Hauptmenü();
+            ha1.Menü();
+        }
+    }
+}
