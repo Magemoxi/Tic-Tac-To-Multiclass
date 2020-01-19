@@ -8,63 +8,55 @@ namespace ErneuterVersuch
 {
     class Spielfeld
     {
-        protected bool erneuterSchleifendurchlauf = true;     // Zum Beenden des Programms
-        protected int a1, a2, a3, b1, b2, b3, c1, c2, c3;     // Für's ergebnis 0 / 1 / 2
-        protected string a11, a22, a33, b11, b22, b33, c11, c22, c33; // Für die Ausgabe X / O
-        protected static int input, geradedran, zähler;
-        protected static String spielstart, buchstabe;
+        protected static bool erneuterSchleifendurchlauf = true;                    // Zum Beenden des Programms
+        protected static int a1, a2, a3, b1, b2, b3, c1, c2, c3;             // Für's ergebnis 0 / 1 / 2
+        protected static string a11, a22, a33, b11, b22, b33, c11, c22, c33; // Für die Ausgabe X / O
+
+        protected  static int    menüpunkt, weristdran, zähler, input;
+        protected  static String spielstart, buchstabe;
 
         //###################################################
         //####################################################################
         //###################################################
         public Spielfeld()
         {
+        }
+
+        public Spielfeld(int pMenüpunkt, String pSpielstart, int pWeristdran)
+        {
             a1 = a2 = a3 = b1 = b2 = b3 = c1 = c2 = c3 = 0;
             a11 = a22 = a33 = b11 = b22 = b33 = c11 = c22 = c33 = "?";
-            input = 0;
-            geradedran = 1;
-            spielstart = "000000";
-            buchstabe = "";
-            zähler = 0;
-        }
 
-        public void setSpielstart(String startWert)
-        {
-            spielstart = startWert;
-        } 
+            menüpunkt = pMenüpunkt;     // Auswahl Menü 1-5
+            spielstart = pSpielstart;   // Auswahl Spieler 1 ob "x" oder "o"
+            weristdran = pWeristdran;   // Wecheln der Spieler
+            buchstabe = "0";            // Seztz ein x oder ein o in die variablen
 
-        public String getSpielstart()
-        {
-            return spielstart;
+             zähler = 0;
+             input = 0;
+
+            
+
         }
 
         //############################################
-        public void setWeristdran(int pWeristdran)
+        public void setOutput(int pWeristdran, String pBuchstabe)
         {
-            pWeristdran = geradedran;
+            pWeristdran = weristdran;
+            pBuchstabe = buchstabe;
         }
 
-        public int getWeristdran()
+      /*  public int getOutput()
         {
-            return geradedran;
+            return
         }
+        */
 
-        //############################################
-
-        public void setMenüpunkt(int pMenüpunkt)
-        {
-            pWeristdran = geradedran;
-        }
-
-        public int getMenüpunkt()
-        {
-            return menüpunkt;
-        }
 
         //###################################################
         //####################################################################
         //###################################################
-        public void Menü(int menüpunkt)
+        public void Menü()
         {
             
             /*
@@ -80,45 +72,55 @@ namespace ErneuterVersuch
             Console.WriteLine("\t\t\t" + a11 + " " + a22 + " " + a33);
             Console.WriteLine("\t\t\t" + b11 + " " + b22 + " " + b33);
             Console.WriteLine("\t\t\t" + c11 + " " + c22 + " " + c33 + "\n\n\n");
-            Console.WriteLine(spielstart);
+            
 
             //############################################################
-            Console.WriteLine(menüpunkt);
-            EingabeSpieler1 es1 = new EingabeSpieler1();
+            Console.WriteLine("menüpunkt: " + menüpunkt);
+            Console.WriteLine("spielstart: " + spielstart);
+
+            
+
             // Wenn spieler 1 = Spieler 1 beginnt mit x
             if (menüpunkt == 1)
             {
+                EingabeSpieler player = new EingabeSpieler();
+                Console.WriteLine("fertig");
+
                 if (spielstart.Equals("x"))
                 {
-                    if (geradedran == 1)
+                    if (weristdran == 1)
                     {
                         Console.Write("Spieler 1, setze dein x\n\n\t");
-                        
+                        player.Spieler();
                     }
-                    else if (geradedran == 2)
+                    else if (weristdran == 2)
                     {
                         Console.Write("Spieler 2, setze dein o\n\n\t");
-
+                        player.Spieler();
                     }
                     else
                         Console.WriteLine("spielstart ist >>" + spielstart + "<<");
                 }
+                
+                
+
+
             }//end if menüpunkt == 1
 
             //###############################
 
-            EingabeSpieler2 es2 = new EingabeSpieler2();
+           
             // Wenn spieler 2 = Spieler 2 beginnt mit o
             if (menüpunkt == 2)
             {
                 if (spielstart.Equals("o"))
                 {
-                    if (geradedran == 1)
+                    if (weristdran == 1)
                     {
                         Console.Write("Spieler 1, setze dein x\n\n\t");
                        // es2.setInput(1);
                     }
-                    else if (geradedran == 2)
+                    else if (weristdran == 2)
                     {
                         Console.Write("Spieler 2, setze dein o\n\n\t");
 
