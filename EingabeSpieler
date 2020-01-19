@@ -6,31 +6,16 @@ using System.Threading.Tasks;
 
 namespace ErneuterVersuch
 {
-    class EingabeSpieler1 : Spielfeld
+    class EingabeSpieler : Spielfeld
     {
-        protected int input = 0;
-        protected int geradedran = 0;
-        protected String spielstart = "";
-        protected String buchstabe = "";
 
-        //################
-        public void setInput(int eingabe)
+
+        public void Spieler()
         {
-            input = eingabe;
-        }
+            Console.WriteLine("EingabeSpieler");
 
-        public int getInput() 
-        {
-            return input;
-        }
-
-        //#####################################
-        public void Menü()
-        {
-            Console.WriteLine("EingabeSpieler1");
-
-            Spielfeld spieler1 = new Spielfeld();
-            spielstart = spieler1.getSpielstart();
+            
+         //   spielstart = spieler1.getSpielstart();
 
             while (true)
             {
@@ -42,18 +27,18 @@ namespace ErneuterVersuch
 
                 if (spielstart.Equals("x"))
                 {
-                    if (geradedran == 1)
+                    if (weristdran == 1)
                         buchstabe = "x";
-                    else if (geradedran == 2)
+                    else if (weristdran == 2)
                         buchstabe = "o";
                     else Console.WriteLine("Fehler buchstabe x oder o");
                 }
 
                 if (spielstart.Equals("o"))
                 {
-                    if (geradedran == 1)
+                    if (weristdran == 1)
                         buchstabe = "o";
-                    else if (geradedran == 2)
+                    else if (weristdran == 2)
                         buchstabe = "x";
                     else Console.WriteLine("Fehler buchstabe o oder x");
                 }
@@ -69,7 +54,7 @@ namespace ErneuterVersuch
                         case 1:
                             if (c1 == 0)
                             {
-                                c1 = geradedran;
+                                c1 = weristdran;
                                 c11 = buchstabe;
                                 nochmal = false;
                             }
@@ -79,7 +64,7 @@ namespace ErneuterVersuch
                         case 2:
                             if (c2 == 0)
                             {
-                                c2 = geradedran;
+                                c2 = weristdran;
                                 c22 = buchstabe;
                                 nochmal = false;
                             }
@@ -89,7 +74,7 @@ namespace ErneuterVersuch
                         case 3:
                             if (c3 == 0)
                             {
-                                c3 = geradedran;
+                                c3 = weristdran;
                                 c33 = buchstabe;
                                 nochmal = false;
                             }
@@ -99,7 +84,7 @@ namespace ErneuterVersuch
                         case 4:
                             if (b1 == 0)
                             {
-                                b1 = geradedran;
+                                b1 = weristdran;
                                 b11 = buchstabe;
                                 nochmal = false;
                             }
@@ -109,7 +94,7 @@ namespace ErneuterVersuch
                         case 5:
                             if (b2 == 0)
                             {
-                                b2 = geradedran;
+                                b2 = weristdran;
                                 b22 = buchstabe;
                                 nochmal = false;
                             }
@@ -119,7 +104,7 @@ namespace ErneuterVersuch
                         case 6:
                             if (b3 == 0)
                             {
-                                b3 = geradedran;
+                                b3 = weristdran;
                                 b33 = buchstabe;
                                 nochmal = false;
                             }
@@ -129,7 +114,7 @@ namespace ErneuterVersuch
                         case 7:
                             if (a1 == 0)
                             {
-                                a1 = geradedran;
+                                a1 = weristdran;
                                 a11 = buchstabe;
                                 nochmal = false;
                             }
@@ -139,7 +124,7 @@ namespace ErneuterVersuch
                         case 8:
                             if (a2 == 0)
                             {
-                                a2 = geradedran;
+                                a2 = weristdran;
                                 a22 = buchstabe;
                                 nochmal = false;
                             }
@@ -149,7 +134,7 @@ namespace ErneuterVersuch
                         case 9:
                             if (a3 == 0)
                             {
-                                a3 = geradedran;
+                                a3 = weristdran;
                                 a33 = buchstabe;
                                 nochmal = false;
                             }
@@ -165,8 +150,11 @@ namespace ErneuterVersuch
                 }//end while switch
                 nochmal = true; // damit die schleife wieder unendlich laufen kann
 
-                Auswertung aus1 = new Auswertung();
-                aus1.Menü();
+
+
+                // auswertung
+                Auswertung berechnen = new Auswertung();
+                berechnen.Vergleichen();
 
             }//end while   
         }// end Spieler1
