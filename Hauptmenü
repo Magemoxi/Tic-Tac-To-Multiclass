@@ -19,10 +19,10 @@ namespace ErneuterVersuch
                 Console.WriteLine("###  Tic Tac To V.5                     ###");
                 Console.WriteLine("###  1) Spieler 1 gebinnt mit x         ###");
                 Console.WriteLine("###  2) Spieler 1 gebinnt mit o         ###");
-                Console.WriteLine("###  3) Ich vs. Rechner || (Anfänger)   ###");
-                Console.WriteLine("###  4) Rechner vs mir  || (Anfänger)   ###");
-                Console.WriteLine("###  01)  Neues Spiel (Gleicher Modus)   ###");
-                Console.WriteLine("###  0) Beenden :-(                    ###");
+                Console.WriteLine("### - 3) Ich vs. Rechner || (Anfänger)   ###");
+                Console.WriteLine("### - 4) Rechner vs mir  || (Anfänger)   ###");
+                Console.WriteLine("### - 01)  Neues Spiel (Gleicher Modus)  ###");
+                Console.WriteLine("###  0) Beenden :-(                     ###");
                 Console.WriteLine("###########################################");
                 Console.WriteLine("\n Warte auf Eingabe...");
 
@@ -34,21 +34,14 @@ namespace ErneuterVersuch
                     {
                         case 1:
                             Console.Clear();
-                            Spielfeld s1= new Spielfeld();
-                            
-                            s1.setSpielstart("x");
-                            s1.setWeristdran(1);
-                            s1.Menü(input);
-                            Console.WriteLine(s1.getSpielstart());
+                            Spielfeld spielfeld = new Spielfeld(1, "x", 1);
+                            spielfeld.Menü();
                             Console.ReadLine();
                             break;
                         case 2:
                             Console.Clear();
-                            Spielfeld s2 = new Spielfeld();
-                            
-                            s2.setSpielstart("o");
-                            s2.setWeristdran(1);
-                            s2.Menü(input);
+                            Spielfeld spielfeld2 = new Spielfeld(2, "o", 1);
+                            spielfeld2.Menü();
                             break;
                         case 3:
                             Console.Clear();
