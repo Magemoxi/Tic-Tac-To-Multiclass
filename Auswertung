@@ -8,8 +8,8 @@ namespace ErneuterVersuch
 {
     class Auswertung : Spielfeld
     {
-
-        public void Menü()
+        
+        public void Vergleichen()
         {
             Console.WriteLine("Auswertung");
             /*
@@ -17,30 +17,30 @@ namespace ErneuterVersuch
             4 5 6  <->  b1 b2 b3
             1 2 3  <->  c1 c2 c3
             */
-            Console.WriteLine("aktueller speiler vor auswerung:  " + geradedran);
-            if (((a1 == geradedran) && (a2 == geradedran) && (a3 == geradedran)) ||
-                    ((b1 == geradedran) && (b2 == geradedran) && (b3 == geradedran)) ||
-                    ((c1 == geradedran) && (c2 == geradedran) && (c3 == geradedran)) ||
+            Console.WriteLine("aktueller speiler vor auswerung:  " + weristdran);
+            if (((a1 == weristdran) && (a2 == weristdran) && (a3 == weristdran)) ||
+                    ((b1 == weristdran) && (b2 == weristdran) && (b3 == weristdran)) ||
+                    ((c1 == weristdran) && (c2 == weristdran) && (c3 == weristdran)) ||
 
-                    ((a1 == geradedran) && (b2 == geradedran) && (c3 == geradedran)) ||
-                    ((a3 == geradedran) && (b2 == geradedran) && (c1 == geradedran))
+                    ((a1 == weristdran) && (b2 == weristdran) && (c3 == weristdran)) ||
+                    ((a3 == weristdran) && (b2 == weristdran) && (c1 == weristdran))
                )
             {
                 Console.Clear();
-                Console.WriteLine($"\n\n\t\t\tSpieler {geradedran} hat gewonnen <3");
+                Console.WriteLine($"\n\n\t\t\tSpieler {weristdran} hat gewonnen <3");
                 Console.WriteLine("\n\t\t\tBeliebige Taste drücken um ins Hauptmenü zurückzukehren");
                 Console.ReadLine();
                 //Hauptmenü();
             }//end if
 
 
-            if (geradedran == 1)
-                geradedran = 2;
-            else if (geradedran == 2)
-                geradedran = 1;
+            if (weristdran == 1)
+                weristdran = 2;
+            else if (weristdran == 2)
+                weristdran = 1;
             else Console.WriteLine("Fehler");
 
-            //Spielfeld();
+            Spielfeld.Menü();
 
         }//end Menü
     }//end class auswertung
