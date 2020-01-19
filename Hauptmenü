@@ -1,0 +1,83 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ErneuterVersuch
+{
+    class Hauptmenü
+    {
+        public void Menü()
+        {
+            Console.Clear();
+            Console.WriteLine("Hauptmenü");
+
+            while (true)
+            {
+                Console.WriteLine("\n###########################################");
+                Console.WriteLine("###  Tic Tac To V.5                     ###");
+                Console.WriteLine("###  1) Spieler 1 gebinnt mit x         ###");
+                Console.WriteLine("###  2) Spieler 1 gebinnt mit o         ###");
+                Console.WriteLine("###  3) Ich vs. Rechner || (Anfänger)   ###");
+                Console.WriteLine("###  4) Rechner vs mir  || (Anfänger)   ###");
+                Console.WriteLine("###  01)  Neues Spiel (Gleicher Modus)   ###");
+                Console.WriteLine("###  0) Beenden :-(                    ###");
+                Console.WriteLine("###########################################");
+                Console.WriteLine("\n Warte auf Eingabe...");
+
+                try
+                {   // Wandelt die Eingabe von einem String in einem int wegen switch um.
+                    int input = int.Parse(Console.ReadLine());
+                    //  Console.WriteLine("Eingabe input 1: {0}  und input 2: {1} " ,input1, input2);     // Testen warum input 1 & 2 nicht sausgegeben werden
+                    switch (input)
+                    {
+                        case 1:
+                            Console.Clear();
+                            Spielfeld s1= new Spielfeld();
+                            
+                            s1.setSpielstart("x");
+                            s1.setWeristdran(1);
+                            s1.Menü(input);
+                            Console.WriteLine(s1.getSpielstart());
+                            Console.ReadLine();
+                            break;
+                        case 2:
+                            Console.Clear();
+                            Spielfeld s2 = new Spielfeld();
+                            
+                            s2.setSpielstart("o");
+                            s2.setWeristdran(1);
+                            s2.Menü(input);
+                            break;
+                        case 3:
+                            Console.Clear();
+
+                            break;
+                        case 4:
+                            Console.Clear();
+                            ;
+                            //Console.WriteLine("Mein Skill reicht dafür noch nicht aus -.- ");
+                            break;
+                        case 5:
+                            Console.Clear();
+                            break;
+                        case 0:
+                            Console.Clear();
+                            Environment.Exit(0);
+                            break;
+                        default:                // Wenn Zahlen < 0 oder > 4
+                            Console.Clear();
+                            Console.WriteLine($"Nur Zahlen von 0 bis 4! Deine Eingabe war: {input}");
+                            break;
+                    }//end switch                 
+                }//end try
+                catch (Exception)               // Falls Eingabe anderes als Zahlen
+                {
+                    Console.Clear();
+                    Console.WriteLine("Das war keine Zahl -.- ");   // muss noch unterscheiden zwischen string und einem zu großen int
+                } // end catch
+            } //end while schleife
+        }// end methode  Auswahl
+    }// end class
+}//end namespace
