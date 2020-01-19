@@ -1,0 +1,3 @@
+Tic-Tac-To-Multiclass
+
+V.2 Zweiter Versuch die Klassen auszulagern. Nicht weiter beachten, muss da nochmal ran....
