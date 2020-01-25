@@ -1,0 +1,43 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Spiel
+{
+    class Erzeugen1
+    {
+        String menüpunkt;
+
+        Spielfeld spielfeld = new Spielfeld("x");
+        Spieler spieler1 = new Spieler();
+        Spieler spieler2 = new Spieler();
+        Tabelle tabelle = new Tabelle();
+        Ergebnis ergebnis = new Ergebnis();
+        public void ErzeugenMenü(String pMenüpunkt)
+        {
+            menüpunkt = pMenüpunkt;
+            if (menüpunkt == "1")
+            {
+                Espielfeld();
+            }
+        }
+
+        public void Espielfeld()
+        {
+            spielfeld.SpielfeldMenü();
+        }
+
+        public void Espieler1()
+        {
+            spieler1.SpielerMenü();
+        }
+
+        public void Espieler2()
+        {
+            spieler2.SpielerMenü();
+        }
+
+    }
+}
