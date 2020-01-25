@@ -1,15 +1,13 @@
 Tic-Tac-To-Multiclass
 
-V.3 3 Versuch 3 mehere Klassen zu benutzen, unfertig, verbuggt und unschön. 
+V.4 Vierter Versuch mehere Klassen zu benutzen.
 
-Klasse 1 ruft Klasse 2 auf, diese KLasse 3 usw. dabei wurde jedesmal eine neue Instanz erzeugt.
-Problem war das die letze Klasse nicht die erste aufrufen konnte ohne diese neu zu erzeugen und
-somit alle Werte Resetet waren.
+Als ich das Spiel in einer Klasse gestopft habe, hat jede Methode sich selbst oder entsprechend andere aufgerufen.
+Das führte zu viel Abhänigkeit und wurde komplizierter wenn man es erweitern möchte wie z.B. den Bot Modus.
 
-Ich habe jetz eine einer Erzeuger Klasse ersetllt, welche einmal alle Klassen neu erzeugt und entsprechend 
-Methoden dafür geschrieben, welche ich aus den Restlichen Klassen aufrufen kann.
+Bin nun zu dem Schluss gekommen eine Erzeuger Klasse zu erstellen, die jede Klasse einmal erzeugt und alle 
+anderen Klassen aufruft, Parameter entgegennimmt und weiterleitet.
 
-Jedoch bekomm ich wenn ich das Spiel mit der 1 im Hauptmenü starte in der Klasse Erzeuger eine 
-System.StackOverflowException wo ich die Klasse  Spielfeld erzeuge.
+Das mit den get & Set Methoden ist viel zu unübersichtlich (ja es geht einfacher aber bin noch Java gewohnt) scheint aber besser zu funktionieren.
 
-Zeile: 13   Spielfeld spielfeld = new Spielfeld("x");
+Habe bis jetz auf Schleifen verzichtet und dennoch findet eine eine Rekursion statt ....
