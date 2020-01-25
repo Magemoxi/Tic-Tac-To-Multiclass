@@ -1,0 +1,16 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Spiel
+{
+    class Spieler
+    {
+        public void SpielerMenü()
+        {
+            Console.WriteLine("spieler wurde gehwäjlt");
+        }
+    }
+}
