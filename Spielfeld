@@ -7,24 +7,72 @@ using System.Threading.Tasks;
 namespace Spiel
 {
 
-    class Spielfeld : Erzeugen1
+    class Spielfeld
     {
         public static String a1, a2, a3, b1, b2, b3, c1, c2, c3;
         public static String a11, a22, a33, b11, b22, b33, c11, c22, c33;
 
-        public static String spielstart;
-        bool ersterText;
-        public Spielfeld(String pspielstart)
+        private static String menüpunkt, spielstart, weristdran, input;
+
+        private static bool ersterText;
+        public Spielfeld()
         {
             a1 = a2 = a3 = b1 = b2 = b3 = c1 = c2 = c3 = "0";
             a11 = a22 = a33 = b11 = b22 = b33 = c11 = c22 = c33 = "?";
-            spielstart = pspielstart;
-            ersterText = true;
+
+            ersterText = true;  // Nur beim ersten Spielsatrt 
+            input = "";         // Eingabe vom Spieler
+        }
+        //############################################
+
+        // set und getter start ################################################
+        // set & get menüpunkt
+        public void setMenüpunkt(String pMenüpunkt)
+        {
+            menüpunkt = pMenüpunkt;
+        }
+        public String getMenüpounkt()
+        {
+            return menüpunkt;
         }
 
-        //############################################
-        public void SpielfeldMenü()
+        // set & get spielstart
+        public void setSpielstart(String pSpielstart)
         {
+            spielstart = pSpielstart;
+        }
+        public String getSpielstart()
+        {
+            return spielstart;
+        }
+
+        // set & get weristdran
+        public void setWeristdran(String pWeristdran)
+        {
+            weristdran = pWeristdran;
+        }
+        public String getpWeristdran()
+        {
+            return weristdran;
+        }
+
+        // set & get input
+        public void setInput(String pInput)
+        {
+            input = pInput;
+        }
+        public String getInput()
+        {
+            return input;
+        }
+
+        // set und getter ende ################################################
+        public void Menü(String pMenüpunkt, String pSpielstart, String pWeristdran)
+        {
+            menüpunkt = pMenüpunkt;
+            spielstart = pSpielstart;
+            weristdran = pWeristdran;
+
             /*
             7 8 9  <->  a1 a2 a3    
             4 5 6  <->  b1 b2 b3
@@ -40,26 +88,50 @@ namespace Spiel
             Console.WriteLine("\t\t\t" + c11 + " " + c22 + " " + c33 + "\n\n\n");
 
             if (ersterText == true) ErsterText();
+            if (ersterText == false) NachfolgenderText();
         }
-        
+        // nur einmal ausgeführt
         public void ErsterText()
         {
-            if (spielstart == "x") 
+            if (spielstart == "x")
             {
                 Console.WriteLine("Spieler 1 beginnt.");
                 Console.Write("Setze dein x: ");
-                
+
                 ersterText = false;
-                Espieler1();
+                Input();
+                //Espieler1();
             }
 
             else if (spielstart == "o")
             {
                 Console.WriteLine("Spieler 1 beginnt.");
                 Console.Write("Setze dein o: ");
+
                 ersterText = false;
+                Input();
             }
         }
+
+        // je nach dem welcher sieler dran ist ausgeführt
+        public void NachfolgenderText()
+        {
+            Console.WriteLine("das geht schonmal");
+        }
+
+        // eingabe vom spieler set und get mnethode übergeben
+        public void Input()
+        {
+            try
+            {
+                input = Console.ReadLine();
+            }
+            catch
+            {
+                Console.WriteLine("Catchblock im spielfeld");
+            }
+        }
+
 
     }
 }
