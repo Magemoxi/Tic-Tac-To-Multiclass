@@ -9,7 +9,7 @@ namespace Spiel
     class Hauptmenü
     {
         String input = "";
-        String output = "";
+        //String output = "";
         public void Menü()
         {
             Console.WriteLine("--> Hauptmenmü\n");
@@ -37,10 +37,15 @@ namespace Spiel
 
         public void Auswahl() 
         {
-            if (input == "1")
-            {
-                Erzeugen1 erzeugen1 = new Erzeugen1();
-                erzeugen1.ErzeugenMenü("1");
+            if (input == "1")       // Spielstart mit x
+            {                       //String pMenüpunkt, String pSpielstart, String pWeristdran
+                Erzeugen1 erzeugen1 = new Erzeugen1("1", "x", "1");
+                erzeugen1.ErzeugenMenü();
+            }
+            else if (input == "2")  // Spielstart mit o
+            {                       //String pMenüpunkt, String pSpielstart, String pWeristdran
+                Erzeugen1 erzeugen2 = new Erzeugen1("2", "o", "1");
+                erzeugen2.ErzeugenMenü();
             }
             else if (input == "3")
             {
