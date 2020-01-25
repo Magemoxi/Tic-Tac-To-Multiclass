@@ -8,36 +8,73 @@ namespace Spiel
 {
     class Erzeugen1
     {
-        String menüpunkt;
+        // Alle Klassen werden einmal neu erzeugt ugf Parameter übergeben
+        Spielfeld   spielfeld = new Spielfeld();
+        Spieler     spieler1  = new Spieler();
+        Spieler     spieler2  = new Spieler();
+        Tabelle     tabelle   = new Tabelle();
+        Ergebnis    ergebnis  = new Ergebnis();
 
-        Spielfeld spielfeld = new Spielfeld("x");
-        Spieler spieler1 = new Spieler();
-        Spieler spieler2 = new Spieler();
-        Tabelle tabelle = new Tabelle();
-        Ergebnis ergebnis = new Ergebnis();
-        public void ErzeugenMenü(String pMenüpunkt)
+        private static String menüpunkt, spielstart, weristdran, input;
+
+        public Erzeugen1(String pMenüpunkt, String pSpielstart, String pWeristdran)
+        {
+            menüpunkt  = pMenüpunkt;
+            spielstart = pSpielstart;
+            weristdran = pWeristdran;
+
+            input = ""; // Eingabe vom Spieler
+        }
+        // set und getter start ################################################
+        // set & get menüpunkt
+        public void setMenüpunkt(String pMenüpunkt)
         {
             menüpunkt = pMenüpunkt;
-            if (menüpunkt == "1")
-            {
-                Espielfeld();
-            }
+        }
+        public String getMenüpounkt() 
+        {
+            return menüpunkt;
         }
 
-        public void Espielfeld()
+        // set & get spielstart
+        public void setSpielstart(String pSpielstart)
         {
-            spielfeld.SpielfeldMenü();
+            spielstart = pSpielstart;
+        }
+        public String getSpielstart()
+        {
+            return spielstart;
         }
 
-        public void Espieler1()
+        // set & get weristdran
+        public void setWeristdran(String pWeristdran)
         {
-            spieler1.SpielerMenü();
+            weristdran = pWeristdran;
+        }
+        public String getpWeristdran()
+        {
+            return weristdran;
         }
 
-        public void Espieler2()
+        // set & get input
+        public void setInput(String pInput)
         {
-            spieler2.SpielerMenü();
+            input = pInput;
         }
+        public String getpInput()
+        {
+            return input;
+        }
+
+        // set und getter ende ################################################
+        public void ErzeugenMenü()
+        {   //String pMenüpunkt, String pSpielstart, String pWeristdran
+            spielfeld.Menü(menüpunkt, spielstart, weristdran);
+
+            Console.WriteLine(spielfeld.getInput());
+            Console.ReadKey();
+        }
+
 
     }
 }
