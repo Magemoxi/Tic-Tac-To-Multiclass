@@ -4,14 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ErneuterVersuch
+namespace Spiel
 {
     class Program
     {
         static void Main(string[] args)
         {
-            Hauptmenü ha1 = new Hauptmenü();
-            ha1.Menü();
-        }
-    }
-}
+            Hauptmenü TicTactTo = new Hauptmenü();
+            TicTactTo.Menü();
+            Console.ReadKey();
+        }//end main
+    }//end class programm
+}//end namespace
