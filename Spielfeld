@@ -4,132 +4,62 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ErneuterVersuch
+namespace Spiel
 {
-    class Spielfeld
+
+    class Spielfeld : Erzeugen1
     {
-        protected static bool erneuterSchleifendurchlauf = true;                    // Zum Beenden des Programms
-        protected static int a1, a2, a3, b1, b2, b3, c1, c2, c3;             // Für's ergebnis 0 / 1 / 2
-        protected static string a11, a22, a33, b11, b22, b33, c11, c22, c33; // Für die Ausgabe X / O
+        public static String a1, a2, a3, b1, b2, b3, c1, c2, c3;
+        public static String a11, a22, a33, b11, b22, b33, c11, c22, c33;
 
-        protected  static int    menüpunkt, weristdran, zähler, input;
-        protected  static String spielstart, buchstabe;
-
-        //###################################################
-        //####################################################################
-        //###################################################
-        public Spielfeld()
+        public static String spielstart;
+        bool ersterText;
+        public Spielfeld(String pspielstart)
         {
-        }
-
-        public Spielfeld(int pMenüpunkt, String pSpielstart, int pWeristdran)
-        {
-            a1 = a2 = a3 = b1 = b2 = b3 = c1 = c2 = c3 = 0;
+            a1 = a2 = a3 = b1 = b2 = b3 = c1 = c2 = c3 = "0";
             a11 = a22 = a33 = b11 = b22 = b33 = c11 = c22 = c33 = "?";
-
-            menüpunkt = pMenüpunkt;     // Auswahl Menü 1-5
-            spielstart = pSpielstart;   // Auswahl Spieler 1 ob "x" oder "o"
-            weristdran = pWeristdran;   // Wecheln der Spieler
-            buchstabe = "0";            // Seztz ein x oder ein o in die variablen
-
-             zähler = 0;
-             input = 0;
-
-            
-
+            spielstart = pspielstart;
+            ersterText = true;
         }
 
         //############################################
-        public void setOutput(int pWeristdran, String pBuchstabe)
+        public void SpielfeldMenü()
         {
-            pWeristdran = weristdran;
-            pBuchstabe = buchstabe;
-        }
-
-      /*  public int getOutput()
-        {
-            return
-        }
-        */
-
-
-        //###################################################
-        //####################################################################
-        //###################################################
-        public void Menü()
-        {
-            
             /*
-            7 8 9  <->  a1 a2 a3
+            7 8 9  <->  a1 a2 a3    
             4 5 6  <->  b1 b2 b3
             1 2 3  <->  c1 c2 c3
             */
             Console.Clear();
-            Console.WriteLine("spielfeld");
+            Console.WriteLine("--> Spielfeld");
             Console.WriteLine("\n\n\n\t\tDem Nummernlock entspricht das Spielfeld Feld.");
             Console.WriteLine("\n\t\t\t7 8 9 \n\t\t\t4 5 6 \n\t\t\t1 2 3 \n");
             Console.WriteLine("\n\t\tSpielfeld:\n");
             Console.WriteLine("\t\t\t" + a11 + " " + a22 + " " + a33);
             Console.WriteLine("\t\t\t" + b11 + " " + b22 + " " + b33);
             Console.WriteLine("\t\t\t" + c11 + " " + c22 + " " + c33 + "\n\n\n");
-            
 
-            //############################################################
-            Console.WriteLine("menüpunkt: " + menüpunkt);
-            Console.WriteLine("spielstart: " + spielstart);
-
-            
-
-            // Wenn spieler 1 = Spieler 1 beginnt mit x
-            if (menüpunkt == 1)
+            if (ersterText == true) ErsterText();
+        }
+        
+        public void ErsterText()
+        {
+            if (spielstart == "x") 
             {
-                EingabeSpieler player = new EingabeSpieler();
-                Console.WriteLine("fertig");
-
-                if (spielstart.Equals("x"))
-                {
-                    if (weristdran == 1)
-                    {
-                        Console.Write("Spieler 1, setze dein x\n\n\t");
-                        player.Spieler();
-                    }
-                    else if (weristdran == 2)
-                    {
-                        Console.Write("Spieler 2, setze dein o\n\n\t");
-                        player.Spieler();
-                    }
-                    else
-                        Console.WriteLine("spielstart ist >>" + spielstart + "<<");
-                }
+                Console.WriteLine("Spieler 1 beginnt.");
+                Console.Write("Setze dein x: ");
                 
-                
+                ersterText = false;
+                Espieler1();
+            }
 
-
-            }//end if menüpunkt == 1
-
-            //###############################
-
-           
-            // Wenn spieler 2 = Spieler 2 beginnt mit o
-            if (menüpunkt == 2)
+            else if (spielstart == "o")
             {
-                if (spielstart.Equals("o"))
-                {
-                    if (weristdran == 1)
-                    {
-                        Console.Write("Spieler 1, setze dein x\n\n\t");
-                       // es2.setInput(1);
-                    }
-                    else if (weristdran == 2)
-                    {
-                        Console.Write("Spieler 2, setze dein o\n\n\t");
+                Console.WriteLine("Spieler 1 beginnt.");
+                Console.Write("Setze dein o: ");
+                ersterText = false;
+            }
+        }
 
-                    }
-                }
-            }//end if menüpunkt == 2
-
-
-        }//end menü
-
-    }//end class
-}//end namespace
+    }
+}
