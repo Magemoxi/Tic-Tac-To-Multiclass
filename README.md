@@ -9,7 +9,7 @@ Das Spielfeld hat 9 Felder. Erst wenn das 9nte Feld belegt ist, soll das Program
 
 Wenn man schon vorher gewonnen hat, wird die Schleife nicht ausgeführt was richtig ist.
 Aber der else Teil der Schleife wird trozdem ausgeführt !! 
-Was nicht sein kann, da die Schleife niemals aufgerufen  ..... -.-  
+Was nicht sein kann, da die Schleife niemals aufgerufen wird ..... -.-  
 
 
 
