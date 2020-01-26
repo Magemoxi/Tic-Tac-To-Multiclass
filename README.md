@@ -1,6 +1,6 @@
 Tic-Tac-To-Multiclass
 
-V.5 Es leuft aber nicht wie gewollt.
+V.5 Es leuft einigermassen aber nicht so wie ich es deviniert habe.
 
 Klasse Ergebnis:
 
