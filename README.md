@@ -7,7 +7,7 @@ Klasse Ergebnis:
 Das Spielfeld hat 9 Felder. Erst wenn das 9nte Feld belegt ist, soll das Programm in die Schleife gehen.
 (wieOftGespieltWurde == 9)
 
-Wenn man schon vorher gewonnen hat, wird die Schleife nicht ausgeführt was richtig ist.
+Wenn man jemand schon vorher gewonnen hat, wird die Schleife nicht ausgeführt was richtig ist.
 Aber der else Teil der Schleife wird trozdem ausgeführt !! 
 Was nicht sein kann, da die Schleife niemals aufgerufen wird ..... -.-  
 
