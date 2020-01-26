@@ -1,0 +1,90 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Spiel
+{
+    class Ergebnis
+    {
+        private static String menüpunkt, spielstart, weristdran, buchstabe, output;
+
+        private static int wieOftGespieltWurde = 0; 
+
+        // set und getter start ################################################
+        // set & get output
+        // set & get output
+        public void setOutput(String pOutput)
+        {
+            output = pOutput;
+        }
+        public String getOutput()
+        {
+            return output;
+        }
+        // set und getter ende ################################################
+
+        public void Menü(String pMenüpunkt, String pSpielstart, String pWeristdran, String pBuchstabe)
+        {
+            menüpunkt  = pMenüpunkt;
+            spielstart = pSpielstart;
+            weristdran = pWeristdran;
+            buchstabe  = pBuchstabe;
+
+            Console.WriteLine("--> Ergebnis");
+            Console.WriteLine("################################################################");
+            /*
+            7 8 9  <->  a1 a2 a3
+            4 5 6  <->  b1 b2 b3
+            1 2 3  <->  c1 c2 c3
+            */
+            Console.WriteLine("Aktueller Spieler vor der Auswerung:  " + weristdran);
+
+            // Geprüft ob je,mand gewonnen hat
+                    // Wagerecht
+            if (    ((Spielfeld.a1 == weristdran) && (Spielfeld.a2 == weristdran) && (Spielfeld.a3 == weristdran)) ||
+                    ((Spielfeld.b1 == weristdran) && (Spielfeld.b2 == weristdran) && (Spielfeld.b3 == weristdran)) ||
+                    ((Spielfeld.c1 == weristdran) && (Spielfeld.c2 == weristdran) && (Spielfeld.c3 == weristdran)) ||
+
+                    //Seknrecht
+                    ((Spielfeld.a1 == weristdran) && (Spielfeld.b1 == weristdran) && (Spielfeld.c1 == weristdran)) ||
+                    ((Spielfeld.a2 == weristdran) && (Spielfeld.b2 == weristdran) && (Spielfeld.c2 == weristdran)) ||
+                    ((Spielfeld.a3 == weristdran) && (Spielfeld.b3 == weristdran) && (Spielfeld.c3 == weristdran)) ||
+
+                    // Diagonal
+                    ((Spielfeld.a1 == weristdran) && (Spielfeld.b2 == weristdran) && (Spielfeld.c3 == weristdran)) ||
+                    ((Spielfeld.a3 == weristdran) && (Spielfeld.b2 == weristdran) && (Spielfeld.c1 == weristdran))
+               )
+            {
+                Console.WriteLine($"\n\n\t\t\tSpieler {weristdran} hat gewonnen :)");
+                Console.WriteLine("\n\t\t\tBeliebige Taste drücken um ins Hauptmenü zurückzukehren");
+                Console.ReadKey();
+                output = "Das Spiel ist zuende";        // Schleifenabbruch in der Klasse erzeuge Muss identisch mit dem output in der Klasse Erzeuge sein
+                Console.WriteLine("gewonnen. out ->> " + output);
+            }
+            else // falls nein zähler erhöt
+            {
+                wieOftGespieltWurde ++;
+            }
+
+            // Geprüft ob niemend gewonnen hat, weil die gesamten spielfelder vollgeschrieben sind
+            Console.WriteLine("wie oft gespielt? anfang " + wieOftGespieltWurde);
+
+            if (wieOftGespieltWurde == 9)               // 10 weil das ergebnis ja zuerst aufgerufen wird und dann erst der spieler ! weil sonst die feldeingabe wartet und alle felder besetz sind falls keienr gewinne kann
+            {
+                Console.WriteLine("Niemand hat das Spiel von euch beiden gewonnen. :-(");
+                Console.ReadKey();
+                output = "Das Spiel ist zu ende";        // Schleifenabbruch in der Klasse erzeuge
+                Console.WriteLine("verloren. out ->> " + output);
+
+            } else // falls noch spielfelder offen sind, kann weitergespielt werden
+            {
+                output = "Es w22222222222222222222";       // muss hier stehen, da im erzeuger den output einliest um zu wissen, ob das spiel beendet ist oder nciht
+            }
+
+            Console.WriteLine("wie ist out am ende der klasse " + output);
+
+        }
+    }
+}
