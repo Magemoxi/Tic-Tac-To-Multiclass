@@ -12,74 +12,32 @@ namespace Spiel
         public static String a1, a2, a3, b1, b2, b3, c1, c2, c3;
         public static String a11, a22, a33, b11, b22, b33, c11, c22, c33;
 
-        private static String menüpunkt, spielstart, weristdran, input;
+        private static String menüpunkt, spielstart, weristdran, buchstabe;
 
-        private static bool ersterText;
+        private String ersterDurchlauf;    // Zum überspringen des ersten Textes
+        private int zähler;                // Zu Debugin zwecken 
         public Spielfeld()
         {
-            a1 = a2 = a3 = b1 = b2 = b3 = c1 = c2 = c3 = "0";
-            a11 = a22 = a33 = b11 = b22 = b33 = c11 = c22 = c33 = "?";
+            a1 = a2 = a3 = b1 = b2 = b3 = c1 = c2 = c3 = "0";           // Zur unterscheidung des Spielfeldes. 0=unbenutz 1=spieler1 2=spieler2
+            a11 = a22 = a33 = b11 = b22 = b33 = c11 = c22 = c33 = "?";  // Zur aktualisierung des Spielfeldes
 
-            ersterText = true;  // Nur beim ersten Spielsatrt 
-            input = "";         // Eingabe vom Spieler
+            ersterDurchlauf = "ja";    // Zum überspringen des ersten Textes
+            zähler = 1;
         }
-        //############################################
-
-        // set und getter start ################################################
-        // set & get menüpunkt
-        public void setMenüpunkt(String pMenüpunkt)
+        public void Menü(String pMenüpunkt, String pSpielstart, String pWeristdran, String pBuchstabe)
         {
-            menüpunkt = pMenüpunkt;
-        }
-        public String getMenüpounkt()
-        {
-            return menüpunkt;
-        }
-
-        // set & get spielstart
-        public void setSpielstart(String pSpielstart)
-        {
-            spielstart = pSpielstart;
-        }
-        public String getSpielstart()
-        {
-            return spielstart;
-        }
-
-        // set & get weristdran
-        public void setWeristdran(String pWeristdran)
-        {
-            weristdran = pWeristdran;
-        }
-        public String getpWeristdran()
-        {
-            return weristdran;
-        }
-
-        // set & get input
-        public void setInput(String pInput)
-        {
-            input = pInput;
-        }
-        public String getInput()
-        {
-            return input;
-        }
-
-        // set und getter ende ################################################
-        public void Menü(String pMenüpunkt, String pSpielstart, String pWeristdran)
-        {
-            menüpunkt = pMenüpunkt;
+            menüpunkt  = pMenüpunkt;
             spielstart = pSpielstart;
             weristdran = pWeristdran;
+            buchstabe  = pBuchstabe;
 
             /*
             7 8 9  <->  a1 a2 a3    
             4 5 6  <->  b1 b2 b3
             1 2 3  <->  c1 c2 c3
             */
-            Console.Clear();
-            Console.WriteLine("--> Spielfeld");
+            
+            Console.WriteLine("--> Spielfeld " + zähler);
             Console.WriteLine("\n\n\n\t\tDem Nummernlock entspricht das Spielfeld Feld.");
             Console.WriteLine("\n\t\t\t7 8 9 \n\t\t\t4 5 6 \n\t\t\t1 2 3 \n");
             Console.WriteLine("\n\t\tSpielfeld:\n");
@@ -87,51 +45,43 @@ namespace Spiel
             Console.WriteLine("\t\t\t" + b11 + " " + b22 + " " + b33);
             Console.WriteLine("\t\t\t" + c11 + " " + c22 + " " + c33 + "\n\n\n");
 
-            if (ersterText == true) ErsterText();
-            if (ersterText == false) NachfolgenderText();
+            if (ersterDurchlauf == "ja")
+            {
+                ErsterText();
+            } else if (ersterDurchlauf == "nein")
+            {
+                NachfolgenderText();
+            }
+            zähler++;
         }
-        // nur einmal ausgeführt
+        // Text NUR für den ersten Spielstart
         public void ErsterText()
         {
             if (spielstart == "x")
             {
                 Console.WriteLine("Spieler 1 beginnt.");
                 Console.Write("Setze dein x: ");
-
-                ersterText = false;
-                Input();
-                //Espieler1();
             }
-
             else if (spielstart == "o")
             {
                 Console.WriteLine("Spieler 1 beginnt.");
-                Console.Write("Setze dein o: ");
-
-                ersterText = false;
-                Input();
+                Console.Write("Setze dein o: ");      
             }
+            ersterDurchlauf = "nein";       // Abbruchkriterium
         }
 
-        // je nach dem welcher sieler dran ist ausgeführt
+        // Text für jeden weiteren Spielerzug
         public void NachfolgenderText()
         {
-            Console.WriteLine("das geht schonmal");
-        }
-
-        // eingabe vom spieler set und get mnethode übergeben
-        public void Input()
-        {
-            try
+            if (weristdran == "1")
             {
-                input = Console.ReadLine();
-            }
-            catch
+                Console.WriteLine("Spieler 1, du bist nun an der Reihe.");
+            } 
+            else if (weristdran == "2")
             {
-                Console.WriteLine("Catchblock im spielfeld");
+                Console.WriteLine("Spieler 2, du bist nun an der Reihe");
             }
         }
-
-
+        
     }
 }
