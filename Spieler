@@ -8,9 +8,177 @@ namespace Spiel
 {
     class Spieler
     {
-        public void SpielerMenü()
+        private static String menüpunkt, spielstart, weristdran, buchstabe, input;
+        // menüpunkt = spielstart = weristdran = input = "nix" ;
+
+        // set und getter start ################################################
+        // set & get input
+        public void setInput(String pInput)
         {
-            Console.WriteLine("spieler wurde gehwäjlt");
+            input = pInput;
         }
+        public String getInput()
+        {
+            return input;
+        }
+        // set und getter ende ################################################
+
+        public void Menü(String pMenüpunkt, String pSpielstart, String pWeristdran, String pBuchstabe)
+        {
+            menüpunkt = pMenüpunkt;
+            spielstart = pSpielstart;
+            weristdran = pWeristdran;
+            buchstabe = pBuchstabe;
+
+            Console.WriteLine("--> Spieler");
+            Input();
+        }
+
+        public void Input()
+        {
+            Console.WriteLine("Im Input angekommen");
+            try
+            {
+                input = Console.ReadLine();
+                VergleicheInput();          // sonst bleibt man hier stecken
+            }
+            catch
+            {
+                Console.WriteLine("Catchblock im Input spieler, einmal enter drücken");
+                Input();
+            }
+        }
+
+        public void VergleicheInput()
+        {
+            Console.WriteLine("Im vergleicheInput angekommen");
+
+            /*
+            7 8 9  <->  a1 a2 a3    
+            4 5 6  <->  b1 b2 b3
+            1 2 3  <->  c1 c2 c3
+            */
+            // a1 usw.  Zur unterscheidung des Spielfeldes. 0=unbenutz 1=spieler1 2=spieler2
+            // a11 usw. Zur aktualisierung des Spielfeldes
+
+            switch (input)
+            {
+                case "1":
+                    if (Spielfeld.c1 == "0")
+                        {
+                            Spielfeld.c1  = weristdran;
+                            Spielfeld.c11 = buchstabe;
+                        }
+                    else
+                        {
+                            Console.Write("Feld bereits gesetzt, wähle ein unbenutzes !");
+                            Input();
+                        }    
+                break;
+                case "2":
+                    if (Spielfeld.c2 == "0")
+                        {
+                            Spielfeld.c2  = weristdran;
+                            Spielfeld.c22 = buchstabe;
+                        }
+                    else
+                        {
+                            Console.Write("Feld bereits gesetzt, wähle ein unbenutzes !");
+                            Input();
+                        }
+                break;
+                case "3":
+                    if (Spielfeld.c3 == "0")
+                        {
+                            Spielfeld.c3  = weristdran;
+                            Spielfeld.c33 = buchstabe;
+                        }
+                    else
+                        {
+                            Console.Write("Feld bereits gesetzt, wähle ein unbenutzes !");
+                            Input();
+                        }
+                break;
+                case "4":
+                    if (Spielfeld.b1 == "0")
+                        {
+                            Spielfeld.b1 = weristdran;
+                            Spielfeld.b11 = buchstabe;
+                        }
+                    else
+                    {
+                        Console.Write("Feld bereits gesetzt, wähle ein unbenutzes !");
+                        Input();
+                    }
+                break;
+                case "5":
+                    if (Spielfeld.b2 == "0")
+                        {
+                            Spielfeld.b2 = weristdran;
+                            Spielfeld.b22 = buchstabe;
+                        }
+                        else
+                        {
+                            Console.Write("Feld bereits gesetzt, wähle ein unbenutzes !");
+                            Input();
+                        }
+                break;
+                case "6":
+                    if (Spielfeld.b3 == "0")
+                        {
+                            Spielfeld.b3 = weristdran;
+                            Spielfeld.b33 = buchstabe;
+                        }
+                    else
+                        {
+                            Console.Write("Feld bereits gesetzt, wähle ein unbenutzes !");
+                            Input();
+                        }
+                break;
+                case "7":
+                    if (Spielfeld.a1 == "0")
+                        {
+                            Spielfeld.a1 = weristdran;
+                            Spielfeld.a11 = buchstabe;
+                        }
+                    else
+                        {
+                            Console.Write("Feld bereits gesetzt, wähle ein unbenutzes !");
+                            Input();
+                        }
+                break;
+                case "8":
+                    if (Spielfeld.a2 == "0")
+                        {
+                            Spielfeld.a2 = weristdran;
+                            Spielfeld.a22 = buchstabe;
+                        }
+                    else
+                        {
+                            Console.Write("Feld bereits gesetzt, wähle ein unbenutzes !");
+                            Input();
+                        }
+                break;
+                case "9":
+                    if (Spielfeld.a3 == "0")
+                        {
+                            Spielfeld.a3 = weristdran;
+                            Spielfeld.a33 = buchstabe;
+                        }
+                    else
+                        {
+                            Console.Write("Feld bereits gesetzt, wähle ein unbenutzes !");
+                            Input();
+                        }
+                break;
+                default:
+                {
+                    Console.WriteLine("Klasse Spieler Swirch & case block default fehler");
+                    Input();
+                }
+                break;
+            }
+           
+        }//end public void VergleicheInput()
     }
 }
