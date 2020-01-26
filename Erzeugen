@@ -1,0 +1,88 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Spiel
+{
+    class Erzeuge
+    {
+        // Alle Klassen werden einmal neu erzeugt Parameter übergeben
+        Spielfeld   spielfeld = new Spielfeld();
+        Spieler     spieler1  = new Spieler();
+        Spieler     spieler2  = new Spieler();
+        Tabelle     tabelle   = new Tabelle();
+        Ergebnis    ergebnis  = new Ergebnis();
+
+        private static String menüpunkt, spielstart, weristdran, buchstabe, input, output;
+
+        public Erzeuge(String pMenüpunkt, String pSpielstart, String pWeristdran, String pBuchstabe)
+        {
+            menüpunkt  = pMenüpunkt;    // 1    2   3   Auswahl des Menüpunktes
+            spielstart = pSpielstart;   // x    o   ?   Buchstabe bei Spielstart von Spieler 1
+            weristdran = pWeristdran;   // 1    1   1   Spieler
+            buchstabe  = pBuchstabe;     // x    x       Bei Spieler wechels muss sich der Spieler Buchstabe ändern     
+
+            input  = "";                             // Eingabe vom Spieler
+            output = "Es wird noch gespielt";        // Ausgabe vom Erghebnis
+        }
+
+        public void Menü()
+        {
+            if (menüpunkt == "1" || menüpunkt == "2")
+            {
+                ErzeugeFürAuswahl1oder2();
+            }
+        }
+        public void ErzeugeFürAuswahl1oder2()  //String pMenüpunkt, String pSpielstart, String pWeristdran
+        {
+            while (output == "Es wird noch gespielt")       // im Konstruktor deviniert
+            {
+                // Spielfeld erzeugen und dazu die Texte ausgeben
+                spielfeld.Menü(menüpunkt, spielstart, weristdran, buchstabe);
+
+                // Input vom Spieler  entgegennehmen & auswerten ob das gesetze Feld auch setzbar ist, falls ja wird direkt im Spielfeld Variable reinegschrieben
+                spieler1.Menü(menüpunkt, spielstart, weristdran, buchstabe);
+
+                // Ergebnis auswertet doe Variabnel zustände vom Spielfeld aus, ob jemand gewonnen hat 
+                // Hat jemand gewonnen, ist output das abbruch kritetium
+                ergebnis.Menü(menüpunkt, spielstart, weristdran, buchstabe);
+                output = ergebnis.getOutput();
+                Console.WriteLine("output ist: " + output);
+
+                // Spieler wird gewechelt & dessen Buchstaben bei Spielstatr mit x
+                if (menüpunkt == "1")
+                {
+                    if (weristdran == "1")
+                    {
+                        weristdran = "2";
+                        buchstabe = "o";
+                    }
+                    else if (weristdran == "2")
+                    {
+                        weristdran = "1";
+                        buchstabe = "x";
+                    }
+                }
+
+                // Spieler wird gewechelt & dessen Buchstaben bei Spielstatr mit o
+                if (menüpunkt == "2")
+                {
+                    if (weristdran == "1")
+                    {
+                        weristdran = "2";
+                        buchstabe = "x";
+                    }
+                    else if (weristdran == "2")
+                    {
+                        weristdran = "1";
+                        buchstabe = "o";
+                    }
+                }
+
+            }
+        }// end public void ErzeugeFürAuswahl1()
+
+    }// end class
+}//end namespace
