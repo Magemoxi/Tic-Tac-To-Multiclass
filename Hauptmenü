@@ -37,15 +37,15 @@ namespace Spiel
 
         public void Auswahl() 
         {
-            if (input == "1")       // Spielstart mit x
-            {                       //String pMenüpunkt, String pSpielstart, String pWeristdran
-                Erzeugen1 erzeugen1 = new Erzeugen1("1", "x", "1");
-                erzeugen1.ErzeugenMenü();
+            if (input == "1")       // Spieler 1 hat Buchstabe x, Spieler 2 das o
+            {                       //String pMenüpunkt, String pSpielstart, String pWeristdran, String Buchstabe
+                Erzeuge erzeugt1 = new Erzeuge("1", "x", "1", "x");
+                erzeugt1.Menü();
             }
-            else if (input == "2")  // Spielstart mit o
-            {                       //String pMenüpunkt, String pSpielstart, String pWeristdran
-                Erzeugen1 erzeugen2 = new Erzeugen1("2", "o", "1");
-                erzeugen2.ErzeugenMenü();
+            else if (input == "2")  // Spieler 1 hat Buchstabe o, Spieler 2 das x
+            {                       //String pMenüpunkt, String pSpielstart, String pWeristdran, String Buchstabe
+                Erzeuge erzeugt2 = new Erzeuge("2", "o", "1", "o");
+                erzeugt2.Menü();
             }
             else if (input == "3")
             {
