@@ -1,13 +1,27 @@
 Tic-Tac-To-Multiclass
 
-V.4 Vierter Versuch mehere Klassen zu benutzen.
+V.5 Es leuft aber nicht wie gewollt.
 
-Als ich das Spiel in einer Klasse gestopft habe, hat jede Methode sich selbst oder entsprechend andere aufgerufen.
-Das führte zu viel Abhänigkeit und wurde komplizierter wenn man es erweitern möchte wie z.B. den Bot Modus.
+Klasse Ergebnis:
 
-Bin nun zu dem Schluss gekommen eine Erzeuger Klasse zu erstellen, die jede Klasse einmal erzeugt und alle 
-anderen Klassen aufruft, Parameter entgegennimmt und weiterleitet.
+Das Spielfeld hat 9 Felder. Erst wenn das 9nte Feld belegt ist, soll das Programm in die Schleife gehen.
+(wieOftGespieltWurde == 9)
 
-Das mit den get & Set Methoden ist viel zu unübersichtlich (ja es geht einfacher aber bin noch Java gewohnt) scheint aber besser zu funktionieren.
+Wenn man schon vorher gewonnen hat, wird die Schleife nicht ausgeführt was richtig ist.
+Aber der else Teil der Schleife wird trozdem ausgeführt !! 
+Was nicht sein kann, da die Schleife niemals aufgerufen  ..... -.-  
 
-Habe bis jetz auf Schleifen verzichtet und dennoch findet eine eine Rekursion statt ....
+
+
+
+            if (wieOftGespieltWurde == 9)               // 10 weil das ergebnis ja zuerst aufgerufen wird und dann erst der spieler ! weil sonst die feldeingabe wartet und alle felder besetz sind falls keienr gewinne kann
+            {
+                Console.WriteLine("Niemand hat das Spiel von euch beiden gewonnen. :-(");
+                Console.ReadKey();
+                output = "Das Spiel ist zu ende";        // Schleifenabbruch in der Klasse erzeuge
+                Console.WriteLine("verloren. out ->> " + output);
+
+            } else // falls noch spielfelder offen sind, kann weitergespielt werden
+            {
+                output = "Es w22222222222222222222";       // muss hier stehen, da im erzeuger den output einliest um zu wissen, ob das spiel beendet ist oder nciht
+            }
