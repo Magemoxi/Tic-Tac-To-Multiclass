@@ -2,6 +2,9 @@ Tic-Tac-To-Multiclass
 
 V.5 Es leuft einigermassen aber nicht so wie ich es deviniert habe.
 
+Ich habe es geschaft den else Teil einer if Verzweigung auszuführen, ohne die if if Bedinung erfüllt zuhaben. 
+
+
 Klasse Ergebnis:
 
 Das Spielfeld hat 9 Felder. Erst wenn das 9nte Feld belegt ist, soll das Programm in die Schleife gehen.
