@@ -10,7 +10,7 @@ namespace Spiel
     {
         private static String menüpunkt, spielstart, weristdran, buchstabe, output;
 
-        private static int spielRunde = 0; 
+        private static int spielRunde; 
 
         // set und getter start ################################################
         // set & get output
@@ -25,32 +25,21 @@ namespace Spiel
         }
         // set und getter ende ################################################
 
-        public void Menü(String pMenüpunkt, String pSpielstart, String pWeristdran, String pBuchstabe)
+        public void Menü(String pMenüpunkt, String pSpielstart, String pWeristdran, String pBuchstabe, String pOutput, int pSpielRunde)
         {
             menüpunkt  = pMenüpunkt;
             spielstart = pSpielstart;
             weristdran = pWeristdran;
             buchstabe  = pBuchstabe;
 
-            Console.WriteLine("--> Ergebnis Anfang");
-            Console.WriteLine("################################################################");
-            Console.Clear();
+            output     = pOutput;   // Sollte übergeben werden, weil ansonsten klasse erzeuger output alls leer liest und die erzeuger schleife abbgebrochen wird
+            spielRunde = pSpielRunde;
 
-            Console.WriteLine("### --> Variablen Ergebnis ? Start: <-- ###");
-//            Console.WriteLine("zähler: \t" + zähler);
-            Console.WriteLine("menüpunkt: \t" + menüpunkt);
-            Console.WriteLine("weristdran: \t" + weristdran);
-            Console.WriteLine("buchstabe: \t" + buchstabe);
-
-            Console.WriteLine("spielRunde: \t" + spielRunde);
-            Console.WriteLine("output: \t" + output);
-            Console.WriteLine("### --> Variablen Ergebnis ? Ende: <-- ###");
             /*
             7 8 9  <->  a1 a2 a3
             4 5 6  <->  b1 b2 b3
             1 2 3  <->  c1 c2 c3
             */
-            Console.WriteLine("Aktueller Spieler vor der Auswerung:  " + weristdran);
 
             // Geprüft ob je,mand gewonnen hat
                     // Wagerecht
@@ -72,48 +61,18 @@ namespace Spiel
                 Console.WriteLine("\n\t\t\tBeliebige Taste drücken um ins Hauptmenü zurückzukehren");
                 Console.ReadKey();
                 output = "Das Spiel ist zuende";        // Schleifenabbruch in der Klasse erzeuge Muss identisch mit dem output in der Klasse Erzeuge sein
-                Console.WriteLine("gewonnen output: ->> " + output);
-                Console.ReadKey();
             }
-            else // falls nein zähler erhöt
-            {
-                Console.WriteLine("Spielrunde else anfang " + spielRunde);
-                spielRunde ++;
-            }
+
 
             // Geprüft ob niemend gewonnen hat, weil die gesamten spielfelder vollgeschrieben sind
-            
-
-            if (spielRunde == 9)               // 10 weil das ergebnis ja zuerst aufgerufen wird und dann erst der spieler ! weil sonst die feldeingabe wartet und alle felder besetz sind falls keienr gewinne kann
+            if (spielRunde == 9)               // Schleifendurchlauf aus Klasse Erzeuger 10 weil das ergebnis ja zuerst aufgerufen wird und dann erst der spieler ! weil sonst die feldeingabe wartet und alle felder besetz sind falls keienr gewinne kann
             {
-                Console.WriteLine("Niemand hat das Spiel von euch beiden gewonnen. :-(");
+                Console.WriteLine($"\n\n\t\t\tNiemand hat das Spiel von euch beiden gewonnen. :-(");
+                Console.WriteLine("\n\t\t\tBeliebige Taste drücken um ins Hauptmenü zurückzukehren");
                 Console.ReadKey();
                 output = "Das Spiel ist zu ende";        // Schleifenabbruch in der Klasse erzeuge
             } 
-            else // falls noch spielfelder offen sind, kann weitergespielt werden
-            {
-                Console.WriteLine("FEHLER DAS DARF NICHT SEIN");
-                output = "Es wird noch gespielt";       // muss hier stehen, da im erzeuger den output einliest um zu wissen, ob das spiel beendet ist oder nciht
-                Console.ReadLine();
-            }
 
-
-
-            Console.WriteLine("--> Ergebnis Ende");
-            Console.WriteLine("################################################################");
-            Console.Clear();
-
-            Console.WriteLine("### --> Variablen Ergebnis ? Start: <-- ###");
-            //            Console.WriteLine("zähler: \t" + zähler);
-            Console.WriteLine("menüpunkt: \t" + menüpunkt);
-            Console.WriteLine("weristdran: \t" + weristdran);
-            Console.WriteLine("buchstabe: \t" + buchstabe);
-
-            Console.WriteLine("spielRunde: \t" + spielRunde);
-            Console.WriteLine("output: \t" + output);
-            Console.WriteLine("### --> Variablen Ergebnis ? Ende: <-- ###");
-
-            
         }
     }
 }
