@@ -29,13 +29,11 @@ namespace Spiel
             weristdran = pWeristdran;
             buchstabe  = pBuchstabe;
 
-            Console.WriteLine("--> Spieler");
             Input();
         }
 
         public void Input()
         {
-            Console.WriteLine("Im Input angekommen");
             try
             {
                 input = Console.ReadLine();
