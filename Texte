@@ -1,0 +1,65 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Spiel
+{
+    class Texte
+    {
+        private static String menüpunkt, spielstart, weristdran, buchstabe;
+
+        private String ersterDurchlauf;    // Zum überspringen des ersten Textes
+        public Texte()
+        {
+            ersterDurchlauf = "ja";         // Zum überspringen des ersten Textes
+
+        }
+        public void Menü(String pMenüpunkt, String pSpielstart, String pWeristdran, String pBuchstabe)
+        {
+            menüpunkt  = pMenüpunkt;
+            spielstart = pSpielstart;
+            weristdran = pWeristdran;
+            buchstabe  = pBuchstabe;
+
+            if (ersterDurchlauf == "ja")
+            {
+                ErsterText();
+            }
+            else if (ersterDurchlauf == "nein")
+            {
+                NachfolgenderText();
+            }
+            else Console.WriteLine("Klasse Texte hat einen fehler im menü");
+        }
+        public void ErsterText()
+        {
+            if (spielstart == "x")
+            {
+                Console.WriteLine("Spieler 1 beginnt.");
+                Console.Write("Setze dein x: ");
+            }
+            else if (spielstart == "o")
+            {
+                Console.WriteLine("Spieler 1 beginnt.");
+                Console.Write("Setze dein o: ");
+            }
+            ersterDurchlauf = "nein";       // Abbruchkriterium
+        }
+
+        // Text für jeden weiteren Spielerzug
+        public void NachfolgenderText()
+        {
+            if (weristdran == "1")
+            {
+                Console.WriteLine("Spieler 1, du bist nun an der Reihe.");
+            }
+            else if (weristdran == "2")
+            {
+                Console.WriteLine("Spieler 2, du bist nun an der Reihe");
+            }
+        }
+
+    }
+}
