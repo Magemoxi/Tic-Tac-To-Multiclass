@@ -44,43 +44,6 @@ namespace Spiel
             Console.WriteLine("\t\t\t" + a11 + " " + a22 + " " + a33);
             Console.WriteLine("\t\t\t" + b11 + " " + b22 + " " + b33);
             Console.WriteLine("\t\t\t" + c11 + " " + c22 + " " + c33 + "\n\n\n");
-
-            if (ersterDurchlauf == "ja")
-            {
-                ErsterText();
-            } else if (ersterDurchlauf == "nein")
-            {
-                NachfolgenderText();
-            }
-            zähler++;
-        }
-        // Text NUR für den ersten Spielstart
-        public void ErsterText()
-        {
-            if (spielstart == "x")
-            {
-                Console.WriteLine("Spieler 1 beginnt.");
-                Console.Write("Setze dein x: ");
-            }
-            else if (spielstart == "o")
-            {
-                Console.WriteLine("Spieler 1 beginnt.");
-                Console.Write("Setze dein o: ");      
-            }
-            ersterDurchlauf = "nein";       // Abbruchkriterium
-        }
-
-        // Text für jeden weiteren Spielerzug
-        public void NachfolgenderText()
-        {
-            if (weristdran == "1")
-            {
-                Console.WriteLine("Spieler 1, du bist nun an der Reihe.");
-            } 
-            else if (weristdran == "2")
-            {
-                Console.WriteLine("Spieler 2, du bist nun an der Reihe");
-            }
         }
         
     }
