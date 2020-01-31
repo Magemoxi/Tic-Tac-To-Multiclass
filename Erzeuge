@@ -38,39 +38,28 @@ namespace Spiel
         }
         public void ErzeugeFürAuswahl1oder2()  //String pMenüpunkt, String pSpielstart, String pWeristdran
         {
-            int zähler = 0;
-            
+            int spielRunde = 0;     // Sind alle Spielfelder belegt, ist das Spiel unendschieden aund ebenfalls zuende
             while (output == "Es wird noch gespielt")       // im Konstruktor deviniert
             {
+                spielRunde++;
                 Console.Clear();
-                zähler++;
-                Console.WriteLine("### --> Variablen ? Start: <-- ###");
-                Console.WriteLine("zähler: \t" + zähler);
-                Console.WriteLine("menüpunkt: \t" + menüpunkt);
-                Console.WriteLine("weristdran: \t" + weristdran);
-                Console.WriteLine("buchstabe: \t" + buchstabe);
-                
-                Console.WriteLine("output: \t" + output);
-                Console.WriteLine("### --> Variablen ? Ende: <-- ###");
-                
+
                 // Spielfeld erzeugen und dazu die Texte ausgeben
-                spielfeld.Menü(menüpunkt, spielstart, weristdran, buchstabe);
+                spielfeld.Menü(menüpunkt, spielstart, weristdran, buchstabe, spielRunde);
 
                 texte.Menü(menüpunkt, spielstart, weristdran, buchstabe);
 
                 // Input vom Spieler  entgegennehmen & auswerten ob das gesetze Feld auch setzbar ist, falls ja wird direkt im Spielfeld Variable reinegschrieben
                 spieler1.Menü(menüpunkt, spielstart, weristdran, buchstabe);
 
+                Console.Clear();
                 // Spielfeld aktualisierung
-                spielfeld.Menü(menüpunkt, spielstart, weristdran, buchstabe);
+                spielfeld.Menü(menüpunkt, spielstart, weristdran, buchstabe, spielRunde);
 
                 // Ergebnis auswertet doe Variabnel zustände vom Spielfeld aus, ob jemand gewonnen hat 
                 // Hat jemand gewonnen, ist output das abbruch kritetium
-                ergebnis.Menü(menüpunkt, spielstart, weristdran, buchstabe);
+                ergebnis.Menü(menüpunkt, spielstart, weristdran, buchstabe, output, spielRunde);
                 output = ergebnis.getOutput();
-
-                Console.WriteLine("Erzeiugerklasse output = " + output);
-                Console.ReadLine();
 
                 // Spieler wird gewechelt & dessen Buchstaben bei Spielstatr mit x
                 if (menüpunkt == "1")
