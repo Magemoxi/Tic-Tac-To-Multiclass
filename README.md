@@ -5,7 +5,7 @@ V.5 Es leuft einigermassen aber nicht so wie ich es deviniert habe.
 Ich habe es geschaft den else Teil einer if Verzweigung auszuführen, ohne die if if Bedinung erfüllt zuhaben. 
 
 
-Klasse Ergebnis:                    Die Variable spieRunde ist wie im Bild derzeit 2...
+Klasse Ergebnis:                    Die Variable spieRunde ist wie im Bild derzeit 2 sodas der gesamt eif Teil übersprungen werden muss. Habe dazu ein Bild namens zu Readme dazu hochgeladen.
 
 
             if (spielRunde == 9)               // 10 weil das ergebnis ja zuerst aufgerufen wird und dann erst der spieler ! weil sonst die feldeingabe wartet und alle felder besetz sind falls keienr gewinne kann
