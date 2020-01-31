@@ -13,23 +13,20 @@ namespace Spiel
         public static String a11, a22, a33, b11, b22, b33, c11, c22, c33;
 
         private static String menüpunkt, spielstart, weristdran, buchstabe;
-
-        private String ersterDurchlauf;    // Zum überspringen des ersten Textes
-        private int zähler;                // Zu Debugin zwecken 
+        private static int spielRunde;
         public Spielfeld()
         {
             a1 = a2 = a3 = b1 = b2 = b3 = c1 = c2 = c3 = "0";           // Zur unterscheidung des Spielfeldes. 0=unbenutz 1=spieler1 2=spieler2
             a11 = a22 = a33 = b11 = b22 = b33 = c11 = c22 = c33 = "?";  // Zur aktualisierung des Spielfeldes
-
-            ersterDurchlauf = "ja";    // Zum überspringen des ersten Textes
-            zähler = 1;
         }
-        public void Menü(String pMenüpunkt, String pSpielstart, String pWeristdran, String pBuchstabe)
+        public void Menü(String pMenüpunkt, String pSpielstart, String pWeristdran, String pBuchstabe, int pSpielRunde)
         {
             menüpunkt  = pMenüpunkt;
             spielstart = pSpielstart;
             weristdran = pWeristdran;
             buchstabe  = pBuchstabe;
+
+           spielRunde = pSpielRunde;
 
             /*
             7 8 9  <->  a1 a2 a3    
@@ -37,7 +34,7 @@ namespace Spiel
             1 2 3  <->  c1 c2 c3
             */
             
-            Console.WriteLine("--> Spielfeld " + zähler);
+            Console.WriteLine("--> Spiel Runde: " + spielRunde);
             Console.WriteLine("\n\n\n\t\tDem Nummernlock entspricht das Spielfeld Feld.");
             Console.WriteLine("\n\t\t\t7 8 9 \n\t\t\t4 5 6 \n\t\t\t1 2 3 \n");
             Console.WriteLine("\n\t\tSpielfeld:\n");
