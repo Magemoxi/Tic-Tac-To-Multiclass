@@ -9,7 +9,6 @@ namespace Spiel
     class Spieler
     {
         private static String menüpunkt, spielstart, weristdran, buchstabe, input;
-        // menüpunkt = spielstart = weristdran = input = "nix" ;
 
         // set und getter start ################################################
         // set & get input
@@ -25,10 +24,10 @@ namespace Spiel
 
         public void Menü(String pMenüpunkt, String pSpielstart, String pWeristdran, String pBuchstabe)
         {
-            menüpunkt = pMenüpunkt;
+            menüpunkt  = pMenüpunkt;
             spielstart = pSpielstart;
             weristdran = pWeristdran;
-            buchstabe = pBuchstabe;
+            buchstabe  = pBuchstabe;
 
             Console.WriteLine("--> Spieler");
             Input();
