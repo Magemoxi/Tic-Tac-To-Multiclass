@@ -14,7 +14,6 @@ namespace Spiel
         public Texte()
         {
             ersterDurchlauf = "ja";         // Zum überspringen des ersten Textes
-
         }
         public void Menü(String pMenüpunkt, String pSpielstart, String pWeristdran, String pBuchstabe)
         {
@@ -23,15 +22,33 @@ namespace Spiel
             weristdran = pWeristdran;
             buchstabe  = pBuchstabe;
 
-            if (ersterDurchlauf == "ja")
+            if ((menüpunkt == "1") || (menüpunkt == "2"))
             {
-                ErsterText();
+                if (ersterDurchlauf == "ja")
+                {
+                    ErsterText();
+                }
+                else if (ersterDurchlauf == "nein")
+                {
+                    NachfolgenderText();
+                }
+                else Console.WriteLine("Klasse Texte hat einen fehler im menü");
             }
-            else if (ersterDurchlauf == "nein")
+
+            if (menüpunkt == "3")
             {
-                NachfolgenderText();
+                if (ersterDurchlauf == "ja")
+                {
+                    ErsterText();
+                }
+                else if (ersterDurchlauf == "nein")
+                {
+                    NachfolgenderTextPc();
+                }
+                else Console.WriteLine("Klasse Texte hat einen fehler im menü");
             }
-            else Console.WriteLine("Klasse Texte hat einen fehler im menü");
+
+
         }
         public void ErsterText()
         {
@@ -48,7 +65,7 @@ namespace Spiel
             ersterDurchlauf = "nein";       // Abbruchkriterium
         }
 
-        // Text für jeden weiteren Spielerzug
+        // Text für jeden weiteren Spielerzug falls Spieler gegen Spielr spielen
         public void NachfolgenderText()
         {
             if (weristdran == "1")
@@ -57,7 +74,20 @@ namespace Spiel
             }
             else if (weristdran == "2")
             {
-                Console.WriteLine("Spieler 2, du bist nun an der Reihe");
+                Console.WriteLine("Spieler 2, du bist nun an der Reihe.");
+            }
+        }
+
+        // Text für jeden weiteren Spielerzug falls Spieler gegeb PC spielt
+        public void NachfolgenderTextPc()
+        {
+            if (weristdran == "1")
+            {
+                Console.WriteLine("Spieler 1, du bist nun an der Reihe.");
+            }
+            else if (weristdran == "2")
+            {
+                Console.WriteLine("PC denkt nach");
             }
         }
 
