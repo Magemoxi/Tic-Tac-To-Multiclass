@@ -1,0 +1,68 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Spiel
+{
+    class Übergabe
+    {
+        public void Menü()
+        {/*
+            // set und getter start ################################################
+            // set & get menüpunkt
+            public void setMenüpunkt(String pMenüpunkt)
+            {
+                menüpunkt = pMenüpunkt;
+            }
+            public String getMenüpounkt()
+            {
+                return menüpunkt;
+            }
+
+            // set & get spielstart
+            public void setSpielstart(String pSpielstart)
+            {
+                spielstart = pSpielstart;
+            }
+            public String getSpielstart()
+            {
+                return spielstart;
+            }
+
+            // set & get weristdran
+            public void setWeristdran(String pWeristdran)
+            {
+                weristdran = pWeristdran;
+            }
+            public String getpWeristdran()
+            {
+                return weristdran;
+            }
+
+            // set & get input
+            public void setInput(String pInput)
+            {
+                input = pInput;
+            }
+            public String getpInput()
+            {
+                return input;
+            }
+
+            // set & get output
+            public void setOutput(String pOutput)
+            {
+                output = pOutput;
+            }
+            public String getOutput()
+            {
+                return output;
+            }
+            // set und getter ende ################################################
+
+        */
+        }
+    }
+}
