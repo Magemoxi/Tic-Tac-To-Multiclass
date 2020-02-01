@@ -26,7 +26,7 @@ namespace Spiel
             weristdran = pWeristdran;
             buchstabe  = pBuchstabe;
 
-           spielRunde = pSpielRunde;
+           spielRunde  = pSpielRunde;
 
             /*
             7 8 9  <->  a1 a2 a3    
