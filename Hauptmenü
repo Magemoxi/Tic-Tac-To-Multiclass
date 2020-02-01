@@ -8,16 +8,34 @@ namespace Spiel
 {
     class Hauptmenü
     {
-        String input = "";
-        //String output = "";
+         private static String input = "";
+      // private static String output = "";
+
+        private static String rückgabeVorErzeuger = "";    // Wichtig für Methode Auswerten unten
+        private static String rückgabeNachErzeuger = "";    // Wichtig für Methode Auswerten unten
+        
         public void Menü()
         {
+            // Vordergunrd, Hintergundfarbe und Schriftfarbe ändern
+            Console.ForegroundColor = ConsoleColor.DarkRed;
+            Console.BackgroundColor = ConsoleColor.Yellow;
+            //  Console.ResetColor();   // Resetet die Farben
+
+            // Console.Refresh(); gibt es nicht -.- der hintergund wird erst zu 100% übernommen, wenn einmal eine taste oder die console größer bzw kleiner gemacht wurde
+
             Console.WriteLine("--> Hauptmenmü\n");
-            Console.WriteLine("1: Spielstart mit x");
-            Console.WriteLine("2: Spielstart mit o");
-            Console.WriteLine("3: Reset");
-            Console.WriteLine("4: Ende");
-            Console.Write("\n Warte auf eingabe: ");
+            Console.WriteLine("\n##########################################################");
+            Console.WriteLine("###  Tic Tac To Multiclass V.6                         ###");
+            Console.WriteLine("###                                                    ###");
+            Console.WriteLine("###  1: Spieler 1 (x) vs. Spieler 2 (o)                ###");
+            Console.WriteLine("###  2: Spieler 1 (o) vs. Spieler 2 (x)                ###");
+            Console.WriteLine("###                                                    ###");
+            Console.WriteLine("###  3: Spieler 1 (x) vs. Pc (o) << Leichter Modus >>  ###");
+            Console.WriteLine("###                                                    ###");
+            Console.WriteLine("###  4: Menü Reset                                     ###");
+            Console.WriteLine("###  0: Spiel Beenden :(                               ###");
+            Console.WriteLine("##########################################################");
+            Console.WriteLine("\n Warte auf Eingabe :)");
             Input();
         }
 
@@ -39,22 +57,42 @@ namespace Spiel
         {
             if (input == "1")       // Spieler 1 hat Buchstabe x, Spieler 2 das o
             {                       //String pMenüpunkt, String pSpielstart, String pWeristdran, String Buchstabe
+                rückgabeVorErzeuger = "1";
                 Erzeuge erzeugt1 = new Erzeuge("1", "x", "1", "x");
                 erzeugt1.Menü();
+
+                // Auswertung vom Rückgabewert nochmal Spielen ob neues spiel gemacht werden soll
+                rückgabeNachErzeuger = erzeugt1.getInputNochmalSpielen();
+                Auswertung();
             }
             else if (input == "2")  // Spieler 1 hat Buchstabe o, Spieler 2 das x
             {                       //String pMenüpunkt, String pSpielstart, String pWeristdran, String Buchstabe
+                rückgabeVorErzeuger = "2";
                 Erzeuge erzeugt2 = new Erzeuge("2", "o", "1", "o");
                 erzeugt2.Menü();
+
+                // Auswertung vom Rückgabewert nochmal Spielen ob neues spiel gemacht werden soll
+                rückgabeNachErzeuger = erzeugt2.getInputNochmalSpielen();
+                Auswertung();
             }
-            else if (input == "3")
+            else if (input == "3")  // Spieler 1 hat Buchstabe x, PC 2 das o
+            {                       //String pMenüpunkt, String pSpielstart, String pWeristdran, String Buchstabe
+                rückgabeVorErzeuger = "3";
+                Erzeuge erzeugt3 = new Erzeuge("3", "x", "1", "x");
+                erzeugt3.Menü();
+
+                // Auswertung vom Rückgabewert nochmal Spielen ob neues spiel gemacht werden soll
+                rückgabeNachErzeuger = erzeugt3.getInputNochmalSpielen();
+                Auswertung();
+            }
+            else if (input == "4")
             {
                 Console.Write("Reset Erfolgreich. Beliebige Taste drücken: ");
                 Console.ReadKey();
                 Console.Clear();
                 Menü();
             }
-            else if (input == "4")
+            else if (input == "0")
                 Environment.Exit(0);
             else
             {
@@ -63,6 +101,47 @@ namespace Spiel
                 Console.Clear();
                 Menü();
             }
+        }
+
+        
+        // Wertet Rückgabe vom erzeuger aus nezügölioch neues spiel
+        public void Auswertung()
+        {
+            // Wenn rückgabeNachErzeuger == 1 wird ein neues spiel gestartet
+            // Entsprechend dazu muss auch der richtige MOdus gesetz sein.
+            if (rückgabeNachErzeuger == "1")
+            {
+                if (rückgabeVorErzeuger == "1")
+                {
+                    input = "1";
+                    Auswahl();
+                } else if (rückgabeVorErzeuger == "2")
+                {
+                    input = "2";
+                    Auswahl();
+                }else if (rückgabeVorErzeuger == "3")
+                {
+                    input = "3";
+                    Auswahl();
+                }
+            } 
+
+            // Wenn rückgabeNachErzeuger == 2 dann soll das Hauütmenü neu geladen werden
+            if (rückgabeNachErzeuger == "2")
+            {
+                input = "";
+                rückgabeVorErzeuger = "";
+                rückgabeNachErzeuger = "";
+                Console.Clear();
+                Menü();
+            }
+
+            // Wenn rückgabeNachErzeuger == 3 Soll das Programm komplett geschlossen werden 
+            if (rückgabeNachErzeuger == "3")
+            {
+                Environment.Exit(0);
+            }
+
         }
     }
 }
