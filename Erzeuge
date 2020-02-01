@@ -16,7 +16,11 @@ namespace Spiel
         Ergebnis    ergebnis  = new Ergebnis();
         Texte       texte     = new Texte(); 
 
-        private static String menüpunkt, spielstart, weristdran, buchstabe, input, output;
+        private static String menüpunkt, spielstart, weristdran, buchstabe, input, output;  // Übergebende Variablen, nicht doppelt verwenden
+
+
+        private static String menüpunkt2, spielstart2, weristdran2, buchstabe2, input2, output2;  // Für Neues Spiel relvant unten
+        private static String inputNochmalSpielen = ""; // Für Input Methode relevant weiter unten
 
         public Erzeuge(String pMenüpunkt, String pSpielstart, String pWeristdran, String pBuchstabe)
         {
@@ -31,12 +35,21 @@ namespace Spiel
 
         public void Menü()
         {
-            if (menüpunkt == "1" || menüpunkt == "2")
+            // Schreibt Übergebende Variablen in einer Kopie rein, damit für ein Neues Spiel alle zuvor gesetzen Parameter erneut rihtig gesetz werden
+
+            menüpunkt2  = menüpunkt;   
+            spielstart2 = spielstart;  
+            weristdran2 = weristdran;   
+            buchstabe2  = buchstabe;
+            output2     = output;
+
+            Console.ReadLine();
+            if ((menüpunkt == "1") || (menüpunkt == "2") || (menüpunkt == "3"))
             {
-                ErzeugeFürAuswahl1oder2();
+                ErzeugeFürAuswahl1oder2oder3();
             }
         }
-        public void ErzeugeFürAuswahl1oder2()  //String pMenüpunkt, String pSpielstart, String pWeristdran
+        public void ErzeugeFürAuswahl1oder2oder3()  //String pMenüpunkt, String pSpielstart, String pWeristdran
         {
             int spielRunde = 0;     // Sind alle Spielfelder belegt, ist das Spiel unendschieden aund ebenfalls zuende
             while (output == "Es wird noch gespielt")       // im Konstruktor deviniert
@@ -44,25 +57,30 @@ namespace Spiel
                 spielRunde++;
                 Console.Clear();
 
+
                 // Spielfeld erzeugen und dazu die Texte ausgeben
                 spielfeld.Menü(menüpunkt, spielstart, weristdran, buchstabe, spielRunde);
-
                 texte.Menü(menüpunkt, spielstart, weristdran, buchstabe);
+
+
 
                 // Input vom Spieler  entgegennehmen & auswerten ob das gesetze Feld auch setzbar ist, falls ja wird direkt im Spielfeld Variable reinegschrieben
                 spieler1.Menü(menüpunkt, spielstart, weristdran, buchstabe);
 
-                Console.Clear();
+
+                Console.Clear();    // Clear ist Notwendig ansonsten sind 2 Spielfelder gelistet
                 // Spielfeld aktualisierung
                 spielfeld.Menü(menüpunkt, spielstart, weristdran, buchstabe, spielRunde);
+
+
 
                 // Ergebnis auswertet doe Variabnel zustände vom Spielfeld aus, ob jemand gewonnen hat 
                 // Hat jemand gewonnen, ist output das abbruch kritetium
                 ergebnis.Menü(menüpunkt, spielstart, weristdran, buchstabe, output, spielRunde);
                 output = ergebnis.getOutput();
 
-                // Spieler wird gewechelt & dessen Buchstaben bei Spielstatr mit x
-                if (menüpunkt == "1")
+                // Spieler wird gewechselt & dessen Buchstaben bei Spielstart mit "x"
+                if ((menüpunkt == "1") || (menüpunkt == "3"))
                 {
                     if (weristdran == "1")
                     {
@@ -76,7 +94,7 @@ namespace Spiel
                     }
                 }
 
-                // Spieler wird gewechelt & dessen Buchstaben bei Spielstatr mit o
+                // Spieler wird gewechselt & dessen Buchstaben bei Spielstart mit "o"
                 if (menüpunkt == "2")
                 {
                     if (weristdran == "1")
@@ -91,7 +109,89 @@ namespace Spiel
                     }
                 }
             }
+
+            NochmalSpielenMenü(); // Geht noch nicht, muss den bug nioch finden oder besser kompett neu implementieren
         }// end public void ErzeugeFürAuswahl1()
+
+
+         // Geht noch nicht, muss den bug nioch finden oder besser kompett neu implementieren
+        public void NochmalSpielenMenü()
+        {
+            Console.Clear();
+
+            Console.WriteLine("--> Hauptmenmü\n");
+            Console.WriteLine("\n##########################################################");
+            Console.WriteLine("###  Tic Tac To Multiclass V.6                         ###");
+            Console.WriteLine("###                                                    ###");
+            Console.WriteLine("###  1: Neues Spiel mit gleichem Modus beginnen        ###");
+            Console.WriteLine("###  2: Zurück zum Huptmenü                            ###");
+            Console.WriteLine("###                                                    ###");
+            Console.WriteLine("###  3) Spiel Beenden :(                               ###");
+            Console.WriteLine("##########################################################");
+            Console.WriteLine("\n Warte auf Eingabe :)");
+
+            InputNochmalSpielen();
+        }
+
+        public void InputNochmalSpielen()
+        {
+            try
+            {
+                inputNochmalSpielen = Console.ReadLine();
+                // Überpüfe EIngabe auch richtigkeit
+                if ((inputNochmalSpielen == "1") || (inputNochmalSpielen == "2") || (inputNochmalSpielen == "3"))
+                {
+                    // mache nichts, sollte erst hier rein geschrieben werden in inputNochmalSpielen aber wozu extra 2 variablen dafr anegen ?
+                } else
+                {
+                    Console.WriteLine("Eingabe überprüfen! Nur 1,2 oder 3 zulässig");
+                    InputNochmalSpielen();
+                }
+            }
+            catch
+            {
+                Console.WriteLine("Catchblock");
+                InputNochmalSpielen();
+            }
+        }
+
+        public String getInputNochmalSpielen()
+        {
+            return inputNochmalSpielen;
+        }
+
+
+        /*
+        // Altes Logik, zu doof habs anders geamcht
+        public void AuswahlFrageObWeiterSpielenOderZurückInsHauptmenü()
+        {
+            if (inputFrageObWeiterSpielenOderZurückInsHauptmenü == "1")  // Neues Spipel     
+            {
+                // Zuvor gesetze Variablen wieder richtig setzen, dannach das spiel neu spielen
+                menüpunkt  = menüpunkt2;
+                spielstart = spielstart2;
+                weristdran = weristdran2;
+                buchstabe  = buchstabe2;
+
+                output = output2;
+                Menü();
+            }
+            else if (inputFrageObWeiterSpielenOderZurückInsHauptmenü == "2") // Zurück ins Hauptmenü
+            {                      
+
+            }
+            else if (inputFrageObWeiterSpielenOderZurückInsHauptmenü == "3")
+                Environment.Exit(0);
+            else
+            {
+                Console.Write("Falsche Eingabe!! Beliebige Taste drücken: ");
+                Console.ReadKey();
+                Console.Clear();
+                InputFrageObWeiterSpielenOderZurückInsHauptmenü();
+            }
+        }
+        */
+
 
     }// end class
 }//end namespace
