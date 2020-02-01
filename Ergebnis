@@ -57,8 +57,16 @@ namespace Spiel
                     ((Spielfeld.a3 == weristdran) && (Spielfeld.b2 == weristdran) && (Spielfeld.c1 == weristdran))
                )
             {
-                Console.WriteLine($"\n\n\t\t\tSpieler {weristdran} hat gewonnen :)");
-                Console.WriteLine("\n\t\t\tBeliebige Taste drücken um ins Hauptmenü zurückzukehren");
+                // textkoriktur falls spielr gegen pc pielt
+                if ((menüpunkt == "3") && (weristdran == "2"))  // Nur wenn der Pc gwonne hat soll das auch so im text stehen, ansonsten der Spieler 1 oder 2 jenachdem wer zuletzt dran war
+                {
+                    Console.WriteLine($"\n\n\t\t\tDein PC hat gewonnen ^.^");
+                } else
+                {
+                    Console.WriteLine($"\n\n\t\t\tSpieler {weristdran} hat gewonnen :)");
+                }
+                
+                Console.WriteLine("\n\t\t\tBeliebige Taste drücken.");
                 Console.ReadKey();
                 output = "Das Spiel ist zuende";        // Schleifenabbruch in der Klasse erzeuge Muss identisch mit dem output in der Klasse Erzeuge sein
             }
@@ -68,7 +76,7 @@ namespace Spiel
             if (spielRunde == 9)               // Schleifendurchlauf aus Klasse Erzeuger 10 weil das ergebnis ja zuerst aufgerufen wird und dann erst der spieler ! weil sonst die feldeingabe wartet und alle felder besetz sind falls keienr gewinne kann
             {
                 Console.WriteLine($"\n\n\t\t\tNiemand hat das Spiel von euch beiden gewonnen. :-(");
-                Console.WriteLine("\n\t\t\tBeliebige Taste drücken um ins Hauptmenü zurückzukehren");
+                Console.WriteLine("\n\t\t\tBeliebige Taste drücken.");
                 Console.ReadKey();
                 output = "Das Spiel ist zu ende";        // Schleifenabbruch in der Klasse erzeuge
             } 
