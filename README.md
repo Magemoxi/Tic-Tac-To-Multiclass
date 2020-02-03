@@ -8,7 +8,7 @@ To do:
    - Schönere Menüdarstellung
    - Code optimierung bzw. aufräumen
    
-   - Einstelungsmenü
+   - Einstellungsmenü
    - Spieler 1/2 & Pc sollen Namen haben
    - Hitergung & Vordergunffarbe der Konsole soll änderbar werden 
    
