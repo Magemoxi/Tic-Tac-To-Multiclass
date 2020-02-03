@@ -20,6 +20,6 @@ Geschaft:
    - Features wie ein Neues Spiel beginnen intergiert
    - Mehr an das Menüdesign von Tic Tac To Singelclass angelehnt
    
-Bekannte Bugs in V.6
+Bekannte: Bugs in V.6
 
   - Die Hintergund Farbe wird nicht richtig dargestellt. Einmal Enter drücken oder die größe des Konsolenfensters ändern, dannach sollte die Hintergrundfarbe nur noch einfarbig sein.  
