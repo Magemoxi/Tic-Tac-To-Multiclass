@@ -14,7 +14,7 @@ To do:
    
    - Spieler vs. Pc Normaler Modus
 
-Geschaft:
+Geschafft:
 
    - Spieler vs. Pc Leichter Modus
    - Features wie ein Neues Spiel beginnen intergiert
